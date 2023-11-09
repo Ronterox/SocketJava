@@ -30,7 +30,7 @@ public class Server implements Runnable {
         while (!serverSocket.isClosed()) {
             Socket socket = serverSocket.accept();
             ServerClientHandler clientHandler = new ServerClientHandler(socket, isClient);
-            serverMessage("User has connected " + clientHandler.username + ":" + socket.getInetAddress().getHostAddress());
+            serverMessage("User has connected Username:" + clientHandler.username + ", Address:" + socket.getInetAddress().getHostAddress());
             new Thread(clientHandler).start();
         }
     }

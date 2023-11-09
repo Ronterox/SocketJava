@@ -19,11 +19,15 @@ public class Client {
             String username = getInput("Enter username: ", scanner);
             ip = ip.isEmpty() ? "127.0.0.1" : ip;
 
+            System.out.println("Ip: " + ip + "Username: " + username);
+
             System.out.println("Connecting to " + ip);
             if (ip.equals("localhost")) {
                 server = new Thread(new Server(5000, true));
                 server.start();
+                System.out.println("Starting Server...");
             }
+            System.out.println("Starting client...");
             new Client(new Socket(ip, 5000), username);
         } catch (IOException e) {
             e.printStackTrace();
